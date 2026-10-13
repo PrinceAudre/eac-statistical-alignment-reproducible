@@ -27,3 +27,10 @@ This table summarizes the reproducible search, deduplication, screening, eligibi
 ## Audit interpretation
 
 The 95% confidence intervals in the primary review quantify publication-subsampling uncertainty within the identified eligible finite frame. They do not quantify uncertainty from missed literature, eligibility misclassification, or future publications. Search-anchor checks were regression tests for known indexed records, not estimates of search sensitivity.
+
+
+## Exact search companion audit
+
+Exact PubMed and Scopus search strategies, search-validation history, production execution metadata, export hashes, cross-database deduplication, and the DHS Program supplementary-search audit are provided under `analysis/search_audit/`. The table above is the compact stage-count reconciliation used in the manuscript. Licensed raw database exports are not redistributed.
+
+Final candidate-frame SHA-256: `6272c76e26244651b131dbac7770e32d7b290b3463f3d7f88bcb1710a6b9ef0f`.
