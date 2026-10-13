@@ -2,7 +2,7 @@
 
 Reproducibility materials for:
 
-**Structure, estimand, method and reporting in contemporary secondary analyses of DHS, MICS and DHIS2 data in the East African Community: systematic meta-research with empirical validation**
+**Structure, estimand, method and reporting in contemporary secondary analyses of DHS, MICS and DHIS2 data in the East African Community: systematic meta-research with a prespecified empirical illustration**
 
 Authors:
 - TUYISHIME AUDRE PRINCE, University of Rwanda
@@ -21,7 +21,7 @@ Design-weighted analysis of the frozen 127-publication probability sample:
 - output tables, session information and monochrome figures
 
 ### validation/
-Prespecified Rwanda DHS empirical validation:
+Prespecified Rwanda DHS empirical illustration (the directory name is retained for provenance):
 - pre-access frozen validation specification
 - R analysis and plotting scripts
 - aggregate validation outputs
@@ -34,7 +34,7 @@ This repository does **not** contain:
 - respondent-level Rwanda DHS microdata
 - direct identifiers or restricted data
 
-Rwanda DHS microdata must be requested independently from The DHS Program and used subject to its terms of use. The validation scripts read authorized local microdata but only aggregate, non-disclosive outputs are included here.
+Rwanda DHS microdata must be requested independently from The DHS Program and used subject to its terms of use. The empirical-illustration scripts read authorized local microdata but only aggregate, non-disclosive outputs are included here.
 
 ## Reproduction
 
@@ -44,7 +44,7 @@ Run the literature analysis from the `analysis/` directory:
 Rscript paper2_reproduce_all_final_analysis.R
 ```
 
-The Rwanda validation requires locally authorized RDHS files and is documented in `validation/RDHS_VALIDATION_SPEC_v1.0_FROZEN_2026-10-13.md`.
+The Rwanda empirical illustration requires locally authorized RDHS files and is documented in `validation/RDHS_VALIDATION_SPEC_v1.0_FROZEN_2026-10-13.md`.
 
 Exact package versions are recorded in the relevant `R_sessionInfo.txt` files.
 
