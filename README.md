@@ -69,3 +69,18 @@ The current hardened journal-submission snapshot is identified by the immutable 
 ## Licence
 
 R code is released under the MIT License. Derived aggregate tables and documentation may be reused with attribution. Third-party source data remain subject to their original licences and access conditions.
+
+
+## Submission-facing supplementary artifacts
+
+The manuscript-facing supplement is mapped directly to repository files:
+
+- Supplementary Figure S1: `analysis/outputs/Supplementary_Figure_S1_sentinel_indicators.*`
+- Supplementary Figure S2: `analysis/outputs/Supplementary_Figure_S2_PRISMA_flow.svg`
+- Supplementary Table S1: `analysis/Supplementary_Table_S1_Stratum_Allocation.csv`
+- Supplementary Table S2: `analysis/Supplementary_Table_S2_Full_Text_Exclusion_Reasons.csv`
+- Supplementary Table S3: `analysis/Supplementary_Table_S3_Reliability.csv`
+- Supplementary Table S4: `analysis/Supplementary_Table_S4_Sentinel_Indicators.csv`
+- Supplementary Table S5: `analysis/Supplementary_Table_S5_Sensitivity_Analyses.csv`
+- Supplementary Table S6: `analysis/Supplementary_Table_S6_Domain_CrossTabs_2026-10-13.csv`
+- Supplementary Table S7: `analysis/Supplementary_Table_S7_Search_Frame_Audit_2026-10-13.csv`, with exact search companion files under `analysis/search_audit/`.
