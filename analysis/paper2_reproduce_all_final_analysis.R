@@ -504,23 +504,64 @@ cohen_kappa <- function(a,b) {
   c(agreement=po,kappa=k)
 }
 
+gwet_ac1 <- function(a,b) {
+  lev <- union(unique(a),unique(b))
+  q <- length(lev)
+  po <- mean(a==b)
+  if (q <= 1L) return(c(agreement=po,ac1=NA_real_))
+  pbar <- vapply(lev,function(z) {
+    (mean(a==z)+mean(b==z))/2
+  },numeric(1))
+  pe <- sum(pbar*(1-pbar))/(q-1)
+  ac1 <- if (abs(1-pe)<1e-12) NA_real_ else (po-pe)/(1-pe)
+  c(agreement=po,ac1=ac1)
+}
+
 reliability <- tibble(
   measure=c("D1","D2","D3","D4","Overall"),
   r1=c("R1_D1","R1_D2","R1_D3","R1_D4","R1_Overall"),
   r2=c("R2_D1","R2_D2","R2_D3","R2_D4","R2_Overall")
 ) %>%
   rowwise() %>%
-  mutate(stats=list(cohen_kappa(rel[[r1]],rel[[r2]]))) %>%
+  mutate(
+    stats=list(cohen_kappa(rel[[r1]],rel[[r2]])),
+    ac1_stats=list(gwet_ac1(rel[[r1]],rel[[r2]]))
+  ) %>%
   ungroup() %>%
   transmute(
     measure,
     agreements=mapply(function(x,y) sum(rel[[x]]==rel[[y]]),r1,r2),
     N=nrow(rel),
     raw_agreement=vapply(stats,function(x)x[["agreement"]],numeric(1)),
-    cohen_kappa=vapply(stats,function(x)x[["kappa"]],numeric(1))
+    cohen_kappa=vapply(stats,function(x)x[["kappa"]],numeric(1)),
+    gwet_ac1=vapply(ac1_stats,function(x)x[["ac1"]],numeric(1))
   )
 
 stopifnot(nrow(reliability)==5L, identical(reliability$measure, c("D1","D2","D3","D4","Overall")))
+
+overall_map <- c(
+  fully_aligned="A",
+  materially_misaligned="M",
+  indeterminate_or_partial="I"
+)
+mi_rel <- rel %>%
+  transmute(
+    R1=unname(overall_map[R1_Overall]),
+    R2=unname(overall_map[R2_Overall])
+  ) %>%
+  filter(R1!="A", R2!="A")
+
+mi_k <- cohen_kappa(mi_rel$R1,mi_rel$R2)
+mi_ac1 <- gwet_ac1(mi_rel$R1,mi_rel$R2)
+reliability_mi_split <- tibble(
+  measure="M versus I among publications both reviewers classified as not fully aligned",
+  agreements=sum(mi_rel$R1==mi_rel$R2),
+  N=nrow(mi_rel),
+  raw_agreement=mi_k[["agreement"]],
+  cohen_kappa=mi_k[["kappa"]],
+  gwet_ac1=mi_ac1[["ac1"]]
+)
+stopifnot(nrow(mi_rel)==13L)
 
 # D1-D4 are linked judgments within publications, not independent repeated
 # observations. Publication-facing reliability therefore reports each domain
@@ -615,6 +656,7 @@ write_csv(pitfall_results,file.path(out_dir,"Table_sentinel_indicators.csv"))
 write_csv(sensitivity,file.path(out_dir,"Table_sensitivity.csv"))
 write_csv(lonely_sensitivity,file.path(out_dir,"Table_lonely_stratum_sensitivity.csv"))
 write_csv(reliability,file.path(out_dir,"Table_reliability.csv"))
+write_csv(reliability_mi_split,file.path(out_dir,"Table_reliability_MI_split.csv"))
 write_csv(observability_composition,file.path(out_dir,"Table_observability_composition.csv"))
 write_csv(domain_cross_tabs,file.path(out_dir,"Table_domain_cross_tabs.csv"))
 write_csv(sampling_diagnostics,file.path(out_dir,"Table_sampling_diagnostics.csv"))
