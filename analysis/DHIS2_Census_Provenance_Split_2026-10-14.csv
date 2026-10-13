@@ -1,0 +1,6 @@
+group,n,fully_aligned_n,materially_misaligned_n,indeterminate_or_partial_n,fully_aligned_pct,materially_misaligned_pct,indeterminate_or_partial_pct
+Primary DHIS2 sample raw,47,19,19,9,40.425532,40.425532,19.148936
+Additional carried forward from 2026-10-09 production frame,18,11,1,6,61.111111,5.555556,33.333333
+Additional coded de novo after 2026-10-13 census amendment,24,15,5,4,62.500000,20.833333,16.666667
+All additional publications,42,26,6,10,61.904762,14.285714,23.809524
+Full DHIS2 census,89,45,25,19,50.561798,28.089888,21.348315
