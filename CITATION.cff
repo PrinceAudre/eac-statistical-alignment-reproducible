@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite the associated manuscript and this repository."
+title: "Statistical alignment in EAC secondary data analyses: reproducibility materials"
+version: "1.0.0"
+date-released: 2026-10-13
+type: software
+authors:
+  - family-names: "TUYISHIME"
+    given-names: "AUDRE PRINCE"
+    orcid: "https://orcid.org/0009-0002-0799-3140"
+  - family-names: "Muhirwa"
+    given-names: "Patrick Kayinamura"
+    orcid: "https://orcid.org/0009-0005-9629-350X"
+repository-code: "https://github.com/PrinceAudre/eac-statistical-alignment-reproducible"
+url: "https://osf.io/89mk7/"

@@ -1,0 +1,15 @@
+# Restricted and local data
+*.dta
+*.DTA
+*.sav
+*.SAV
+*.rds
+*.RData
+*.zip
+
+# Local/editor artefacts
+.Rhistory
+.RData
+.Rproj.user/
+.DS_Store
+Thumbs.db

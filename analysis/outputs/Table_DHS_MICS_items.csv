@@ -1,0 +1,7 @@
+item,field,adverse,estimate,ci_low,ci_high,unclear,unclear_low,unclear_high,raw_applicable,raw_adverse
+Survey weights,survey_weights,inappropriate,0.02487501375154323,0,0.055986399341975,0.39975772117694514,0.30106040583612936,0.4984550365177609,80,2
+Cluster / PSU handling,cluster_psu,inappropriate,0,0,0,0.5883052202655683,0.4912298780203477,0.6853805625107889,80,0
+Stratification handling,strata,inappropriate,0,0,0,0.6131802340171116,0.5172704502758628,0.7090900177583604,80,0
+Survey variance,survey_variance,inappropriate,0.12576334546824633,0.05863970986266839,0.19288698107382427,0.4620682105305543,0.3623126878213846,0.561823733239724,80,10
+Subpopulation/domain variance,subpopulation_domain_variance,inappropriate,0,0,0,0.7399067270577467,0.6060493983271207,0.8737640557883728,35,0
+Multilevel claim alignment,multilevel_claim_alignment,inappropriate,0,0,0,0.7771572492334647,0.5251167290562759,1,9,0

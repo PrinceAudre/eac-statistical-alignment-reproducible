@@ -1,0 +1,19 @@
+item,field,adverse,arm,estimate,ci_low,ci_high,unclear,unclear_low,unclear_high,raw_applicable,raw_adverse
+Effect estimate with uncertainty,effect_with_uncertainty,no,DHS/MICS,0,0,0,0.013821736697172638,0,0.038170101248822266,70,0
+P-value threshold overclaim,p_value_threshold_overclaim,present,DHS/MICS,0,0,0,0.058923115750963685,0.013081826536405133,0.10476440496552224,80,0
+Odds ratio described as risk,or_as_risk_problem,present,DHS/MICS,0,0,0,0.07199624951375262,0.020796682240673617,0.12319581678683163,80,0
+Relative effect without absolute context,relative_without_absolute_context,present,DHS/MICS,0,0,0,0.0593967800177314,0.012352344811754033,0.10644121522370878,80,0
+Ecological inference problem,ecological_inference_problem,present,DHS/MICS,NA,NA,NA,NA,NA,NA,0,0
+Unsupported causal language,causal_language_support,unsupported,DHS/MICS,0.33236267372600925,0,0.8251152004771768,0.33236267372600925,0,0.8251152004771768,3,1
+Multiplicity,multiplicity,inappropriate,DHS/MICS,0,0,0,1,1,1,3,0
+Reproducibility information,reproducibility_information,absent,DHS/MICS,0,0,0,1,1,1,80,0
+Code/materials availability,code_or_analysis_materials_available,no,DHS/MICS,0,0,0,1,1,1,80,0
+Effect estimate with uncertainty,effect_with_uncertainty,no,DHIS2,0,0,0,0.2503853892837439,0.12993631644559045,0.3708344621218973,29,0
+P-value threshold overclaim,p_value_threshold_overclaim,present,DHIS2,0,0,0,0.3044846539228562,0.2143272286490589,0.39464207919665345,47,0
+Odds ratio described as risk,or_as_risk_problem,present,DHIS2,0,0,0,0.2831363393161146,0.19243715741078576,0.3738355212214434,47,0
+Relative effect without absolute context,relative_without_absolute_context,present,DHIS2,0,0,0,0.2831363393161146,0.19243715741078576,0.3738355212214434,47,0
+Ecological inference problem,ecological_inference_problem,present,DHIS2,0.022814992709494813,0,0.05449545711972552,0,0,0,44,1
+Unsupported causal language,causal_language_support,unsupported,DHIS2,0.5102133526734836,0.32288252614170787,0.6975441792052592,0.07627138906378265,0,0.18368334186144392,15,8
+Multiplicity,multiplicity,inappropriate,DHIS2,NA,NA,NA,NA,NA,NA,0,0
+Reproducibility information,reproducibility_information,absent,DHIS2,0,0,0,1,1,1,47,0
+Code/materials availability,code_or_analysis_materials_available,no,DHIS2,0,0,0,1,1,1,47,0
