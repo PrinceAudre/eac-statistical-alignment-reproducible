@@ -13,6 +13,13 @@ Protocol registration: https://osf.io/89mk7/
 ## Repository contents
 
 ### analysis/
+Release-safe DHIS2 census robustness artifacts:
+- `DHIS2_Census_Robustness_Summary_2026-10-13.csv`
+- `DHIS2_Census_Robustness_Provenance_2026-10-13.md`
+- `outputs/Table_observability_composition.csv`
+- `outputs/Table_domain_cross_tabs.csv`
+- `outputs/Supplementary_Figure_S1_sentinel_indicators.{pdf,eps,png}`
+
 Design-weighted analysis of the frozen 127-publication probability sample:
 - clean derived analysis dataset
 - reliability dataset

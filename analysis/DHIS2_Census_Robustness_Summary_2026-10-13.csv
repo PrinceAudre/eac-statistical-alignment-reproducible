@@ -1,0 +1,11 @@
+metric,count,denominator,percent,interpretation
+eligible_DHIS2_finite_frame,89,89,100.000,All eligible DHIS2 publications in the identified finite frame
+primary_probability_sample,47,89,52.809,Prespecified primary detailed-coding sample
+additional_posthoc_census_publications,42,89,47.191,Eligible DHIS2 publications outside the primary sample
+additional_carried_forward_finalized_R1,18,42,42.857,Finalized R1 D1-D4 classifications dated 2026-10-09 carried forward unchanged
+additional_coded_de_novo_after_amendment,24,42,57.143,Coded only after the post hoc census amendment
+fully_aligned,45,89,50.562,Census overall state
+materially_misaligned,25,89,28.090,Census overall state
+indeterminate_or_partial,19,89,21.348,Census overall state
+not_fully_aligned,44,89,49.438,Materially misaligned plus indeterminate or partial
+documented_M_among_not_fully,25,44,56.818,Composition of the census not-fully-aligned group
