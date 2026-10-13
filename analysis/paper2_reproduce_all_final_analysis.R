@@ -105,6 +105,7 @@ stopifnot(abs(sum(main$publication_sampling_weight[main$arm=="DHS/MICS"])-377) <
 stopifnot(abs(sum(main$publication_sampling_weight[main$arm=="DHIS2"])-89) < 1e-8)
 stopifnot(nrow(pit)==127L*12L)
 stopifnot(nrow(rel)==26L)
+stopifnot(sum(strata_meta$eligible_N)==466L, sum(strata_meta$sample_n)==127L)
 
 make_design <- function(data, lonely="adjust") {
   options(survey.lonely.psu=lonely)
@@ -372,6 +373,9 @@ pitfall_results <- bind_rows(lapply(levels(main$arm), function(a) {
   }))
 }))
 
+stopifnot(all(pitfall_results$raw_present <= pitfall_results$raw_applicable))
+stopifnot(all(pitfall_results$raw_unclear <= pitfall_results$raw_applicable))
+
 # -------------------------------------------------------------------------
 # Sensitivity analyses
 # -------------------------------------------------------------------------
@@ -470,6 +474,7 @@ sensitivity <- bind_rows(
   other_sensitivity,
   kenya_sensitivity
 )
+stopifnot(sum(sensitivity$analysis=="Kenya coding-nonresponse frame sensitivity")==3L)
 
 # Lonely-stratum variance sensitivity for the PRIMARY outcomes.
 lonely_modes <- c("adjust","average","remove")
@@ -514,6 +519,8 @@ reliability <- tibble(
     raw_agreement=vapply(stats,function(x)x[["agreement"]],numeric(1)),
     cohen_kappa=vapply(stats,function(x)x[["kappa"]],numeric(1))
   )
+
+stopifnot(nrow(reliability)==5L, identical(reliability$measure, c("D1","D2","D3","D4","Overall")))
 
 # D1-D4 are linked judgments within publications, not independent repeated
 # observations. Publication-facing reliability therefore reports each domain
