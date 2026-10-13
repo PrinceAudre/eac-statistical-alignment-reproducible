@@ -1,0 +1,14 @@
+reason,count
+"Wrong geography / multi-country primary analysis",163
+"DHS/MICS round before 2015",139
+"Wrong data family/source",28
+"Not original full research article",21
+"Relevant component not separable from other data sources",19
+"DHIS2 implementation/non-quantitative",13
+"Aggregate DHS/MICS data only",4
+"Full text not available in English",4
+"Duplicate/companion report",2
+"Other",2
+"Outside publication window",0
+"Insufficient article methods for any framework coding",0
+"Total excluded",395
