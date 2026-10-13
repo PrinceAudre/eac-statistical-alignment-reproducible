@@ -1,0 +1,8 @@
+Paper 2 PubMed production export v0.6
+UTC execution timestamp: 2026-08-19T17:40:58Z
+query count: 18
+grand union PMIDs: 603
+search logic source: paper2/search/validate_pubmed_precision.py
+PMID-list SHA-256: ef3278da8660441457d375d4d9922a1a949da0656c1968872bb4dfcb757fbf52
+NBIB SHA-256: 8ee5996fddd5bf5b771772c502d859c135e36a29c2f520fae598aaf1bbdb460b
+supplementary DHS Program discovery is NOT included in this export and remains mandatory before search freeze.
