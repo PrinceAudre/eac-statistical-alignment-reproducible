@@ -52,7 +52,7 @@ Exact package versions are recorded in the relevant `R_sessionInfo.txt` files.
 
 ## Version used for journal submission
 
-The journal-submission snapshot is tagged **v1.0.0**.
+The current hardened journal-submission snapshot is identified by the immutable commit cited in the manuscript Data Availability Statement. The earlier **v1.0.0** tag is retained as a provenance checkpoint from before the final hostile-review hardening pass.
 
 ## Licence
 
