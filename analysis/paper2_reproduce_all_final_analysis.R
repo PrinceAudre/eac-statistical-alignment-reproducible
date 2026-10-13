@@ -344,10 +344,10 @@ pitfall_results <- bind_rows(lapply(levels(main$arm), function(a) {
     state_col <- paste0(pid, "_state")
     app <- d$variables[[app_col]]=="yes"
     present <- d$variables[[state_col]]=="present"
-    unclear <- d$variables[[state_col]]=="unclear"
+    unclear_flag <- d$variables[[state_col]]=="unclear"
     d$variables$.app <- as.numeric(app)
     d$variables$.present <- as.numeric(present & app)
-    d$variables$.unclear <- as.numeric(unclear & app)
+    d$variables$.unclear <- as.numeric(unclear_flag & app)
     if (!any(app)) {
       return(tibble(
         arm=a,pitfall_id=pid,
@@ -367,7 +367,7 @@ pitfall_results <- bind_rows(lapply(levels(main$arm), function(a) {
       arm=a,pitfall_id=pid,pitfall_name=unname(pitfall_names[[pid]]),
       estimate=e1,ci_low=c1["low"],ci_high=c1["high"],
       unclear=e2,unclear_low=c2["low"],unclear_high=c2["high"],
-      raw_applicable=sum(app),raw_present=sum(present & app),raw_unclear=sum(unclear & app)
+      raw_applicable=sum(app),raw_present=sum(present & app),raw_unclear=sum(unclear_flag & app)
     )
   }))
 }))
