@@ -5,7 +5,7 @@ Black-and-white only. Counts are fixed to the frozen Paper 2 search and
 screening audit. The figure distinguishes the eligible finite frame (n=466)
 from the stratified probability sample used for detailed coding (n=127).
 """
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt\nplt.rcParams["svg.fonttype"] = "none"
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 fig, ax = plt.subplots(figsize=(8.2, 10.6))
@@ -74,7 +74,7 @@ ax.text(0.45,0.22,
         ha="left",va="bottom",fontsize=8.1,wrap=True)
 
 plt.tight_layout(pad=0.6)
-for ext in ("pdf","eps","png"):
+for ext in ("pdf","eps","png","svg"):
     kwargs={"dpi":600} if ext=="png" else {}
     plt.savefig(f"Supplementary_Figure_S2_PRISMA_flow.{ext}",
                 bbox_inches="tight", **kwargs)
