@@ -13,6 +13,8 @@ Protocol registration: https://osf.io/89mk7/
 ## Repository contents
 
 ### analysis/
+Search reproducibility: exact PubMed and Scopus/Publish or Perish strategies, validation history, export hashes, deduplication, and DHS Program supplementary-search audit are in `analysis/search_audit/`.
+
 Release-safe DHIS2 census robustness artifacts:
 - `DHIS2_Census_Robustness_Summary_2026-10-13.csv`
 - `DHIS2_Census_Robustness_Provenance_2026-10-13.md`
