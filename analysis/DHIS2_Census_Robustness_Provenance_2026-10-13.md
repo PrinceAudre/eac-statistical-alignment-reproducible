@@ -10,7 +10,7 @@ This file documents the release-safe provenance of the transparently post hoc DH
 - Census state counts are 45 fully aligned, 25 materially misaligned and 19 indeterminate or partial, giving 50.6%, 28.1% and 21.3%, respectively.
 - Among the 44 census publications that were not fully aligned, 25 were materially misaligned, so documented incompatibility comprised 56.8% of the non-full group.
 - Because this is a census of the identified DHIS2 finite frame, these census percentages are reported without publication-subsampling confidence intervals.
-- A deterministic 10-publication secondary QC subset was frozen for independent checking. Those QC results are secondary and are not pooled with the prespecified 26-publication reliability analysis.
+- A deterministic 10-publication subset was frozen for possible secondary QC. No result from that subset is used or claimed in the manuscript; the 42 additional census classifications are treated as a post hoc R1 robustness extension and are not pooled with the prespecified 26-publication reliability analysis.
 - No article full text, copyrighted evidence excerpt, or restricted source material is redistributed in this release-safe public repository.
 
 The census is a post hoc robustness analysis. It does not redefine the primary estimand, primary sample, between-arm inference, or prespecified reliability analysis.
