@@ -32,6 +32,8 @@ Design-weighted analysis of the frozen 127-publication probability sample:
 
 ### validation/
 Prespecified Rwanda DHS empirical illustration (the directory name is retained for provenance):
+- manuscript-facing Figure 3 aliases: `outputs/Figure3_RDHS_empirical_illustration_precision.{eps,png}`
+- legacy `validation`-named figure files are retained only for provenance
 - pre-access frozen validation specification
 - R analysis and plotting scripts
 - aggregate validation outputs

@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 
-# Manuscript-ready Figure 3 from aggregate, frozen Paper 2 validation outputs only.
+# Manuscript-ready Figure 3 from aggregate, frozen Paper 2 empirical-illustration outputs only.
 # No respondent-level microdata are read by this script.
 
 suppressPackageStartupMessages({
@@ -9,7 +9,7 @@ suppressPackageStartupMessages({
   library(ggplot2)
 })
 
-out_dir <- "paper2/validation/generated"
+out_dir <- "outputs"
 v1 <- read_csv(file.path(out_dir, "RDHS_validation_V1_prevalence.csv"), show_col_types=FALSE)
 v2 <- read_csv(file.path(out_dir, "RDHS_validation_V2_regression.csv"), show_col_types=FALSE)
 
@@ -72,9 +72,9 @@ p <- ggplot(d,aes(x=se_ratio,y=outcome,shape=method)) +
     strip.text=element_text(face="bold")
   )
 
-ggsave(file.path(out_dir,"Figure3_RDHS_validation_precision.eps"),
+ggsave(file.path(out_dir,"Figure3_RDHS_empirical_illustration_precision.eps"),
        p,width=7.1,height=3.9,units="in",device="eps")
-ggsave(file.path(out_dir,"Figure3_RDHS_validation_precision.pdf"),
+ggsave(file.path(out_dir,"Figure3_RDHS_empirical_illustration_precision.pdf"),
        p,width=7.1,height=3.9,units="in",device=cairo_pdf)
-ggsave(file.path(out_dir,"Figure3_RDHS_validation_precision.png"),
+ggsave(file.path(out_dir,"Figure3_RDHS_empirical_illustration_precision.png"),
        p,width=7.1,height=3.9,units="in",dpi=600)
