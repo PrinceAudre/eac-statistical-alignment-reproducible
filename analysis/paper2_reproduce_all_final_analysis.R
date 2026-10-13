@@ -453,7 +453,7 @@ kenya_sensitivity <- bind_rows(lapply(overall_levels,function(k) {
     pull(estimate)
   est <- svy_binary(kenya_design,overall_alignment_class==k,"DHS/MICS")
   tibble(
-    analysis="Kenya codeable frame N=63",
+    analysis="Kenya coding-nonresponse frame sensitivity",
     arm="DHS/MICS",
     outcome=overall_labels[[k]],
     reference=ref,
@@ -521,6 +521,60 @@ reliability <- tibble(
 # kappa is generated.
 
 # -------------------------------------------------------------------------
+# Observability composition and within-publication domain cross-tabs
+# -------------------------------------------------------------------------
+
+observability_composition <- bind_rows(lapply(levels(main$arm), function(a) {
+  m <- overall %>% filter(arm==a, outcome=="materially_misaligned") %>% pull(estimate)
+  i <- overall %>% filter(arm==a, outcome=="indeterminate_or_partial") %>% pull(estimate)
+  nf <- m + i
+  tibble(
+    arm=a,
+    materially_misaligned=m,
+    indeterminate_or_partial=i,
+    not_fully_aligned=nf,
+    documented_M_share_among_not_fully=ifelse(nf>0,m/nf,NA_real_),
+    insufficient_I_share_among_not_fully=ifelse(nf>0,i/nf,NA_real_)
+  )
+}))
+
+domain_vars <- c(
+  D1="d1_data_structure_class",
+  D2="d2_inferential_goal_class",
+  D3="d3_method_class",
+  D4="d4_reporting_interpretation_class"
+)
+domain_pairs <- combn(names(domain_vars),2,simplify=FALSE)
+
+domain_cross_tabs <- bind_rows(lapply(levels(main$arm), function(a) {
+  da <- main %>% filter(arm==a)
+  arm_total <- sum(da$publication_sampling_weight)
+  bind_rows(lapply(domain_pairs, function(pr) {
+    v1 <- unname(domain_vars[[pr[1]]])
+    v2 <- unname(domain_vars[[pr[2]]])
+    tibble(
+      state_1=da[[v1]],
+      state_2=da[[v2]],
+      publication_sampling_weight=da$publication_sampling_weight
+    ) %>%
+      group_by(state_1,state_2) %>%
+      summarise(
+        raw_n=n(),
+        weighted_count=sum(publication_sampling_weight),
+        .groups="drop"
+      ) %>%
+      mutate(
+        arm=a,
+        domain_1=pr[1],
+        domain_2=pr[2],
+        weighted_percent_within_arm=100*weighted_count/arm_total
+      ) %>%
+      select(arm,domain_1,domain_2,state_1,state_2,raw_n,
+             weighted_count,weighted_percent_within_arm)
+  }))
+}))
+
+# -------------------------------------------------------------------------
 # Sampling diagnostics
 # -------------------------------------------------------------------------
 
@@ -554,6 +608,8 @@ write_csv(pitfall_results,file.path(out_dir,"Table_sentinel_indicators.csv"))
 write_csv(sensitivity,file.path(out_dir,"Table_sensitivity.csv"))
 write_csv(lonely_sensitivity,file.path(out_dir,"Table_lonely_stratum_sensitivity.csv"))
 write_csv(reliability,file.path(out_dir,"Table_reliability.csv"))
+write_csv(observability_composition,file.path(out_dir,"Table_observability_composition.csv"))
+write_csv(domain_cross_tabs,file.path(out_dir,"Table_domain_cross_tabs.csv"))
 write_csv(sampling_diagnostics,file.path(out_dir,"Table_sampling_diagnostics.csv"))
 
 # -------------------------------------------------------------------------
