@@ -57,7 +57,7 @@ main_file   <- "Paper2_R_Analysis_Compact_127.csv"
 rel_file    <- "Paper2_R_Reliability_Clean_26.csv"
 strata_file <- "Paper2_R_Strata_Clean.csv"
 
-out_dir <- "paper2_R_outputs"
+out_dir <- "outputs"
 dir.create(out_dir, showWarnings=FALSE, recursive=TRUE)
 
 main <- read_csv(main_file, show_col_types=FALSE) %>%
