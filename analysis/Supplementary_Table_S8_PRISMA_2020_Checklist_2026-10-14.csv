@@ -1,0 +1,43 @@
+item,topic,status,manuscript_location,note
+1,Title,Reported,Title,Systematic meta-research design identified in title
+2,Abstract,Reported,Abstract,Objectives methods principal results limitations and interpretation summarised within journal word limit
+3,Rationale,Reported,Introduction,Rationale and prior complex-survey and RHIS methodological literature described
+4,Objectives,Reported,End of Introduction,Primary and secondary objectives stated
+5,Eligibility criteria,Reported,Methods - Eligibility,Publication date geography data-family study-design and analysis criteria reported
+6,Information sources,Reported,Methods - Search strategy,PubMed Scopus and DHS Program supplementary discovery with final search date reported
+7,Search strategy,Reported,Methods and Supplementary Table S7,Exact strategies validation history execution metadata and hashes publicly available
+8,Selection process,Reported,Methods - Screening and full-text eligibility,R1 and R2 process adjudication and hierarchy reported
+9,Data collection process,Reported,Methods - Reviewers and reliability; Coding framework,Detailed coding and independent reliability process reported
+10a,Data items outcomes,Reported,Methods - Coding framework,A M I outcome and D1-D4 domains prespecified
+10b,Other data items,Reported,Methods - Sentinel indicators; Supplementary tables,Source-specific items and sentinel variables reported
+11,Risk of bias assessment,Not applicable,Methods,This meta-research did not estimate intervention effects or apply a study risk-of-bias instrument
+12,Effect measures,Adapted,Methods - Statistical analysis,Finite-population proportions between-arm differences and confidence intervals specified
+13a,Synthesis eligibility,Adapted,Methods - Statistical analysis,Synthesis consists of design-weighted finite-frame estimates rather than intervention meta-analysis
+13b,Data preparation,Reported,Methods; public R code,Coding cleaning weighting and deterministic sensitivity steps are reproducible
+13c,Display methods,Reported,Results Tables 1-3 Figures 1-3 and supplement,Tabular and graphical presentation specified
+13d,Synthesis methods,Reported,Methods - Statistical analysis,Survey package FPC Taylor linearisation and Welch-Satterthwaite contrast methods reported
+13e,Heterogeneity exploration,Adapted,Methods and Results,Data-source arm domain state sentinel and country-stratified design diagnostics reported
+13f,Sensitivity analyses,Reported,Methods and Supplementary Table S5,Weighting pilot exclusion determinate-only lonely-stratum and Kenya-frame analyses reported
+14,Reporting bias assessment,Not applicable,Methods,No intervention-effect synthesis or publication-bias model was undertaken
+15,Certainty assessment,Not applicable,Methods,No GRADE-style body-of-evidence certainty assessment was undertaken
+16a,Study selection results,Reported,Results - Search and study flow; Supplementary Figure S2,Counts from 930 candidates to 466 eligible publications reported
+16b,Excluded studies,Reported,Results; Supplementary Table S2,Full-text exclusion categories and counts reported
+17,Study characteristics,Reported,Results; supplementary data,Data-family and sampling-frame characteristics reported at aggregate level
+18,Risk of bias in studies,Not applicable,Methods,No study risk-of-bias instrument was used
+19,Results of individual studies,Adapted,Public derived dataset,Publication-level methodological coding is provided in release-safe derived form where distributable
+20a,Synthesis results summary,Reported,Results - Overall alignment and domain pattern,Primary finite-frame estimates reported
+20b,Synthesis statistical results,Reported,Tables 1-3 Figures 1-3 and Supplementary Tables,Estimates confidence intervals reliability and diagnostics reported
+20c,Heterogeneity results,Adapted,Results - Domain and source-specific findings,Source-specific patterns and within-publication cross-tabs described
+20d,Sensitivity results,Reported,Results - Sensitivity analyses; Supplementary Table S5,All prespecified sensitivity analyses reported
+21,Reporting biases,Not applicable,Methods,No publication-bias analysis was applicable to the finite-frame methodological outcome
+22,Certainty of evidence,Not applicable,Methods,No formal certainty grading was undertaken
+23a,General interpretation,Reported,Discussion,Findings interpreted against objectives and prior literature
+23b,Limitations of evidence,Reported,Discussion - Limitations,Reporting observability heterogeneity reliability and census-provenance limitations stated
+23c,Limitations of review processes,Reported,Discussion - Limitations,Search-source omissions finite-frame conditioning and coding limitations stated
+23d,Implications,Reported,Discussion and Conclusion,Implications for source-specific statistical safeguards and reporting stated
+24a,Registration,Reported,Methods,OSF registration date and identifier reported
+24b,Protocol access,Reported,Methods and Data Availability,Version-controlled protocol and audit trail locations reported
+24c,Amendments,Reported,Methods,Post hoc DHIS2 census amendment and provenance explicitly dated and described
+25,Support,Reported,Funding,No specific grant funding reported
+26,Competing interests,Reported,Competing interests,Authors declare no competing interests
+27,Availability of data code and materials,Reported,Data Availability Statement,Public repository immutable commit and restrictions on licensed or controlled data reported
