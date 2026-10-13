@@ -1,0 +1,7 @@
+diagnostic,probability
+"P(raw M >= observed)",0.0105123690793627
+"P(raw A <= observed)",0.0365220471534382
+"P(raw M >= observed AND raw A <= observed)",0.00477042880206378
+"P(weighted M >= observed)",0.0073372071361634
+"P(weighted A <= observed)",0.0281222126209504
+"P(weighted M >= observed AND weighted A <= observed)",0.00269499859645492
