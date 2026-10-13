@@ -465,28 +465,26 @@ cohen_kappa <- function(a,b) {
   c(agreement=po,kappa=k)
 }
 
-reliability <- bind_rows(
-  tibble(measure=c("D1","D2","D3","D4","Overall"),
-         r1=c("R1_D1","R1_D2","R1_D3","R1_D4","R1_Overall"),
-         r2=c("R2_D1","R2_D2","R2_D3","R2_D4","R2_Overall")) %>%
-    rowwise() %>%
-    mutate(stats=list(cohen_kappa(rel[[r1]],rel[[r2]]))) %>%
-    ungroup() %>%
-    transmute(
-      measure,
-      agreements=mapply(function(x,y) sum(rel[[x]]==rel[[y]]),r1,r2),
-      N=nrow(rel),
-      raw_agreement=vapply(stats,function(x)x[["agreement"]],numeric(1)),
-      cohen_kappa=vapply(stats,function(x)x[["kappa"]],numeric(1))
-    ),
-  {
-    a <- unlist(rel[c("R1_D1","R1_D2","R1_D3","R1_D4")],use.names=FALSE)
-    b <- unlist(rel[c("R2_D1","R2_D2","R2_D3","R2_D4")],use.names=FALSE)
-    st <- cohen_kappa(a,b)
-    tibble(measure="Pooled D1-D4",agreements=sum(a==b),N=length(a),
-           raw_agreement=st[["agreement"]],cohen_kappa=st[["kappa"]])
-  }
-)
+reliability <- tibble(
+  measure=c("D1","D2","D3","D4","Overall"),
+  r1=c("R1_D1","R1_D2","R1_D3","R1_D4","R1_Overall"),
+  r2=c("R2_D1","R2_D2","R2_D3","R2_D4","R2_Overall")
+) %>%
+  rowwise() %>%
+  mutate(stats=list(cohen_kappa(rel[[r1]],rel[[r2]]))) %>%
+  ungroup() %>%
+  transmute(
+    measure,
+    agreements=mapply(function(x,y) sum(rel[[x]]==rel[[y]]),r1,r2),
+    N=nrow(rel),
+    raw_agreement=vapply(stats,function(x)x[["agreement"]],numeric(1)),
+    cohen_kappa=vapply(stats,function(x)x[["kappa"]],numeric(1))
+  )
+
+# D1-D4 are linked judgments within publications, not independent repeated
+# observations. Publication-facing reliability therefore reports each domain
+# separately plus the rule-based overall classification; no pooled D1-D4
+# kappa is generated.
 
 # -------------------------------------------------------------------------
 # Sampling diagnostics
@@ -588,7 +586,7 @@ save_vector <- function(plot,stem,width,height) {
 }
 save_vector(p1,"Figure1_overall_alignment",7.1,4.2)
 save_vector(p2,"Figure2_domain_states",7.1,5.5)
-save_vector(p3,"Figure3_sentinel_indicators",7.1,5.8)
+save_vector(p3,"Supplementary_Figure_S1_sentinel_indicators",7.1,5.8)
 
 # -------------------------------------------------------------------------
 # Environment and compact console checkpoint
