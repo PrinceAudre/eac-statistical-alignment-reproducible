@@ -21,6 +21,7 @@ Design-weighted analysis of the frozen 127-publication probability sample:
 - output tables, session information and monochrome figures
 - Supplementary Table S6 descriptive D1-D4 cross-tabs
 - Supplementary Table S7 search and candidate-frame audit
+- script for Supplementary Figure S2 identification and screening flow
 
 ### validation/
 Prespecified Rwanda DHS empirical illustration (the directory name is retained for provenance):
