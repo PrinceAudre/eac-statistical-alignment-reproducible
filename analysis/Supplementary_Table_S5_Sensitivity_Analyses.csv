@@ -1,0 +1,38 @@
+component,analysis,mode,arm,outcome,reference,sensitivity,difference,estimate,se,ci_low,ci_high
+estimate_sensitivity,Weighted versus unweighted,,DHS/MICS,Fully aligned,0.3875,0.3868197659828884,-6.802340171115917e-4,,,NA,NA
+estimate_sensitivity,Weighted versus unweighted,,DHS/MICS,Materially misaligned,0.175,0.17303432025672424,-0.0019656797432757445,,,NA,NA
+estimate_sensitivity,Weighted versus unweighted,,DHS/MICS,Indeterminate / partial,0.4375,0.44014591376038736,0.002645913760387364,,,NA,NA
+estimate_sensitivity,Weighted versus unweighted,,DHIS2,Fully aligned,0.40425531914893614,0.4067707573325551,0.0025154381836189343,,,NA,NA
+estimate_sensitivity,Weighted versus unweighted,,DHIS2,Materially misaligned,0.40425531914893614,0.3919062211197043,-0.012349098029231842,,,NA,NA
+estimate_sensitivity,Weighted versus unweighted,,DHIS2,Indeterminate / partial,0.19148936170212766,0.20132302154774065,0.009833659845612991,,,NA,NA
+estimate_sensitivity,Exclude pilot-exposed,,DHS/MICS,Fully aligned,0.3868197659828884,0.3704700795365858,-0.016349686446302636,,,0.27591504956643864,0.4650251095067329
+estimate_sensitivity,Exclude pilot-exposed,,DHS/MICS,Materially misaligned,0.17303432025672424,0.17895110756683397,0.005916787310109722,,,0.09940487028401276,0.25849734484965514
+estimate_sensitivity,Exclude pilot-exposed,,DHS/MICS,Indeterminate / partial,0.44014591376038736,0.4505788128965803,0.010432899136192941,,,0.35113526332191014,0.5500223624712505
+estimate_sensitivity,Exclude pilot-exposed,,DHIS2,Fully aligned,0.4067707573325551,0.4042251786154225,-0.0025455787171325683,,,0.3066147279108657,0.5018356293199793
+estimate_sensitivity,Exclude pilot-exposed,,DHIS2,Materially misaligned,0.3919062211197043,0.3849470312884947,-0.006959189831209578,,,0.2911516882148738,0.47874237436211564
+estimate_sensitivity,Exclude pilot-exposed,,DHIS2,Indeterminate / partial,0.20132302154774065,0.21082779009608277,0.009504768548342118,,,0.12614961067479663,0.2955059695173689
+estimate_sensitivity,Determinate-only,,DHS/MICS,Materially misaligned among determinate,NA,0.3090703890703891,NA,,,0.18475744795045587,0.43338333019032227
+estimate_sensitivity,Not fully aligned,,DHS/MICS,M + I combined,NA,0.6131802340171116,NA,,,0.5172704502758628,0.7090900177583604
+estimate_sensitivity,Determinate-only,,DHIS2,Materially misaligned among determinate,NA,0.49069427527405607,NA,,,0.3834918133406634,0.5978967372074487
+estimate_sensitivity,Not fully aligned,,DHIS2,M + I combined,NA,0.5932292426674449,NA,,,0.49508370247652383,0.6913747828583661
+estimate_sensitivity,Kenya coding-nonresponse frame sensitivity,,DHS/MICS,Fully aligned,0.3868197659828884,0.38689869393193105,7.892794904262868e-5,,,0.2910260875357448,0.48277130032811727
+estimate_sensitivity,Kenya coding-nonresponse frame sensitivity,,DHS/MICS,Materially misaligned,0.17303432025672424,0.17311457870725505,8.025845053080682e-5,,,0.09659754094663173,0.24963161646787838
+estimate_sensitivity,Kenya coding-nonresponse frame sensitivity,,DHS/MICS,Indeterminate / partial,0.44014591376038736,0.43998672736081396,-1.5918639957340774e-4,,,0.34221100743496713,0.5377624472866608
+variance_rule,Lonely-stratum variance rule,adjust,DHS/MICS,Fully aligned,,,,0.3868197659828884,0.048123392901746415,0.29090998224163955,0.4827295497241373
+variance_rule,Lonely-stratum variance rule,adjust,DHS/MICS,Materially misaligned,,,,0.17303432025672424,0.03838872250790938,0.09652570663187766,0.24954293388157084
+variance_rule,Lonely-stratum variance rule,adjust,DHS/MICS,Indeterminate / partial,,,,0.44014591376038736,0.049085699459949055,0.34231825581441566,0.5379735717063591
+variance_rule,Lonely-stratum variance rule,adjust,DHIS2,Fully aligned,,,,0.4067707573325551,0.04856104856932039,0.308625217141634,0.5049162975234762
+variance_rule,Lonely-stratum variance rule,adjust,DHIS2,Materially misaligned,,,,0.3919062211197043,0.04561108474653593,0.29972278021330667,0.48408966202610193
+variance_rule,Lonely-stratum variance rule,adjust,DHIS2,Indeterminate / partial,,,,0.20132302154774065,0.04109282803926103,0.1182713180795026,0.2843747250159787
+variance_rule,Lonely-stratum variance rule,average,DHS/MICS,Fully aligned,,,,0.3868197659828884,0.05138201484459881,0.28441555807517316,0.4892239738906037
+variance_rule,Lonely-stratum variance rule,average,DHS/MICS,Materially misaligned,,,,0.17303432025672424,0.04140524469474704,0.09051378658332723,0.25555485393012123
+variance_rule,Lonely-stratum variance rule,average,DHS/MICS,Indeterminate / partial,,,,0.44014591376038736,0.052717825481119876,0.33507943909335247,0.5452123884274223
+variance_rule,Lonely-stratum variance rule,average,DHIS2,Fully aligned,,,,0.4067707573325551,0.04856104856932039,0.308625217141634,0.5049162975234762
+variance_rule,Lonely-stratum variance rule,average,DHIS2,Materially misaligned,,,,0.3919062211197043,0.04561108474653593,0.29972278021330667,0.48408966202610193
+variance_rule,Lonely-stratum variance rule,average,DHIS2,Indeterminate / partial,,,,0.20132302154774065,0.04109282803926103,0.1182713180795026,0.2843747250159787
+variance_rule,Lonely-stratum variance rule,remove,DHS/MICS,Fully aligned,,,,0.3868197659828884,0.047570502109941196,0.2920118920006383,0.4816276399651385
+variance_rule,Lonely-stratum variance rule,remove,DHS/MICS,Materially misaligned,,,,0.17303432025672424,0.03833380777439761,0.09663515153793563,0.24943348897551287
+variance_rule,Lonely-stratum variance rule,remove,DHS/MICS,Indeterminate / partial,,,,0.44014591376038736,0.04880722244672236,0.3428732597014029,0.5374185678193718
+variance_rule,Lonely-stratum variance rule,remove,DHIS2,Fully aligned,,,,0.4067707573325551,0.04856104856932039,0.308625217141634,0.5049162975234762
+variance_rule,Lonely-stratum variance rule,remove,DHIS2,Materially misaligned,,,,0.3919062211197043,0.04561108474653593,0.29972278021330667,0.48408966202610193
+variance_rule,Lonely-stratum variance rule,remove,DHIS2,Indeterminate / partial,,,,0.20132302154774065,0.04109282803926103,0.1182713180795026,0.2843747250159787
