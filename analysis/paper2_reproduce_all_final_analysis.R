@@ -435,7 +435,41 @@ other_sensitivity <- bind_rows(lapply(levels(main$arm), function(a) {
   )
 }))
 
-sensitivity <- bind_rows(weight_sensitivity,pilot_sensitivity,other_sensitivity)
+# Coding-nonresponse sensitivity: redefine the codeable Kenya DHS frame as
+# N_h=63 instead of the frozen eligible-frame N_h=64, retaining the 14 coded
+# publications and therefore using weight 63/14 in that stratum.
+kenya_codeable <- main
+kenya_idx <- kenya_codeable$arm=="DHS/MICS" &
+  as.character(kenya_codeable$stratum)=="DHS|Kenya"
+kenya_codeable$stratum_N[kenya_idx] <- 63
+kenya_codeable$stratum_n[kenya_idx] <- 14
+kenya_codeable$inclusion_probability[kenya_idx] <- 14/63
+kenya_codeable$publication_sampling_weight[kenya_idx] <- 63/14
+kenya_design <- make_design(kenya_codeable,"adjust")
+
+kenya_sensitivity <- bind_rows(lapply(overall_levels,function(k) {
+  ref <- overall %>%
+    filter(arm=="DHS/MICS", outcome==k) %>%
+    pull(estimate)
+  est <- svy_binary(kenya_design,overall_alignment_class==k,"DHS/MICS")
+  tibble(
+    analysis="Kenya codeable frame N=63",
+    arm="DHS/MICS",
+    outcome=overall_labels[[k]],
+    reference=ref,
+    sensitivity=est$estimate,
+    difference=est$estimate-ref,
+    ci_low=est$ci_low,
+    ci_high=est$ci_high
+  )
+}))
+
+sensitivity <- bind_rows(
+  weight_sensitivity,
+  pilot_sensitivity,
+  other_sensitivity,
+  kenya_sensitivity
+)
 
 # Lonely-stratum variance sensitivity for the PRIMARY outcomes.
 lonely_modes <- c("adjust","average","remove")
