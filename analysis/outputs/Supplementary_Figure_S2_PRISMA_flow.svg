@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1060" viewBox="0 0 820 1060">
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#000} .box{fill:#fff;stroke:#000;stroke-width:1.5}
+.arr{stroke:#000;stroke-width:1.5;fill:none;marker-end:url(#a)}
+.t{font-size:15px;text-anchor:middle}.s{font-size:13px;text-anchor:middle}.b{font-weight:bold}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/></marker></defs>
+<text x="410" y="38" class="t b">Study identification and screening flow</text>
+<text x="410" y="64" class="s">Systematic meta-research of DHS/MICS and DHIS2 analyses in the East African Community</text>
+
+<rect x="35" y="95" width="220" height="82" rx="5" class="box"/><text x="145" y="122" class="s"><tspan x="145">PubMed</tspan><tspan x="145" dy="19">publication-level records</tspan><tspan x="145" dy="19">n = 602</tspan></text>
+<rect x="300" y="95" width="220" height="82" rx="5" class="box"/><text x="410" y="122" class="s"><tspan x="410">Scopus</tspan><tspan x="410" dy="19">unique publications</tspan><tspan x="410" dy="19">n = 793</tspan></text>
+<rect x="565" y="95" width="220" height="82" rx="5" class="box"/><text x="675" y="122" class="s"><tspan x="675">DHS Program</tspan><tspan x="675" dy="19">supplementary records</tspan><tspan x="675" dy="19">n = 159</tspan></text>
+
+<path d="M145 177 L145 215 L410 215 L410 232" class="arr"/><path d="M410 177 L410 232" class="arr"/><path d="M675 177 L675 215 L410 215" class="arr"/>
+<rect x="170" y="235" width="480" height="94" rx="5" class="box"/><text x="410" y="265" class="s"><tspan x="410">Deduplication and supplementary-source reconciliation</tspan><tspan x="410" dy="20">PubMed-Scopus overlap n = 556</tspan><tspan x="410" dy="20">DHS Program already represented n = 68</tspan></text>
+<path d="M410 329 L410 365" class="arr"/>
+
+<rect x="270" y="368" width="280" height="66" rx="5" class="box"/><text x="410" y="397" class="t b"><tspan x="410">Unique candidate publications</tspan><tspan x="410" dy="20">n = 930</tspan></text>
+<path d="M410 434 L410 472" class="arr"/>
+<rect x="270" y="475" width="280" height="62" rx="5" class="box"/><text x="410" y="512" class="t">Title-abstract screening, n = 930</text>
+<rect x="615" y="475" width="160" height="62" rx="5" class="box"/><text x="695" y="503" class="s"><tspan x="695">Excluded</tspan><tspan x="695" dy="19">n = 69</tspan></text>
+<path d="M550 506 L612 506" class="arr"/><path d="M410 537 L410 575" class="arr"/>
+
+<rect x="270" y="578" width="280" height="62" rx="5" class="box"/><text x="410" y="615" class="t">Full-text review, n = 861</text>
+<rect x="615" y="578" width="160" height="62" rx="5" class="box"/><text x="695" y="606" class="s"><tspan x="695">Excluded</tspan><tspan x="695" dy="19">n = 395</tspan></text>
+<path d="M550 609 L612 609" class="arr"/><path d="M410 640 L410 678" class="arr"/>
+
+<rect x="235" y="681" width="350" height="78" rx="5" class="box"/><text x="410" y="708" class="s b"><tspan x="410">Eligible finite publication frame, n = 466</tspan><tspan x="410" dy="21">DHS/MICS n = 377; DHIS2 n = 89</tspan></text>
+<path d="M410 759 L410 798" class="arr"/>
+<rect x="215" y="801" width="390" height="90" rx="5" class="box"/><text x="410" y="828" class="s"><tspan x="410">Detailed methodological coding</tspan><tspan x="410" dy="20">stratified probability sample n = 127</tspan><tspan x="410" dy="20">DHS/MICS n = 80; DHIS2 n = 47</tspan></text>
+<path d="M410 891 L410 929" class="arr"/>
+<rect x="245" y="932" width="330" height="76" rx="5" class="box"/><text x="410" y="959" class="s"><tspan x="410">Independent reliability subsample, n = 26</tspan><tspan x="410" dy="20">DHS/MICS n = 16; DHIS2 n = 10</tspan></text>
+<text x="35" y="1035" style="font-size:12px;text-anchor:start">Note: n = 466 defines the primary finite review population. The n = 127 set is a probability sample for detailed coding, not a further eligibility exclusion.</text>
+</svg>
