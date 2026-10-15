@@ -662,58 +662,124 @@ write_csv(domain_cross_tabs,file.path(out_dir,"Table_domain_cross_tabs.csv"))
 write_csv(sampling_diagnostics,file.path(out_dir,"Table_sampling_diagnostics.csv"))
 
 # -------------------------------------------------------------------------
-# Figures: black-and-white, shape-coded, vector output
+# Figures: monochrome statistical-journal design
 # -------------------------------------------------------------------------
+#
+# Visual rules:
+# - position is the primary encoding;
+# - open versus filled symbols redundantly distinguish data families;
+# - uncertainty is shown whenever an interval estimate is available;
+# - colour carries no scientific meaning;
+# - panel structure is preferred to decorative or high-density displays.
+
+theme_statistical <- function(base_size=10) {
+  theme_classic(base_size=base_size) +
+    theme(
+      axis.line=element_line(linewidth=.35),
+      axis.ticks=element_line(linewidth=.35),
+      panel.grid.major.x=element_line(linewidth=.25,colour="grey85"),
+      panel.grid.major.y=element_blank(),
+      panel.grid.minor=element_blank(),
+      strip.background=element_blank(),
+      strip.text=element_text(face="bold"),
+      legend.position="bottom",
+      legend.title=element_blank(),
+      legend.key.width=grid::unit(1.15,"lines"),
+      plot.margin=margin(5.5,8,5.5,5.5)
+    )
+}
 
 overall_plot <- overall %>%
   mutate(
     arm=factor(arm,levels=c("DHS/MICS","DHIS2")),
-    outcome_label=factor(outcome_label,levels=rev(c("Fully aligned","Materially misaligned","Indeterminate / partial")))
+    outcome_label=factor(
+      outcome_label,
+      levels=c("Fully aligned","Materially misaligned","Indeterminate / partial")
+    )
   )
 
-p1 <- ggplot(overall_plot,aes(x=estimate*100,y=outcome_label,shape=arm)) +
-  geom_errorbar(aes(xmin=ci_low*100,xmax=ci_high*100),
-                position=position_dodge(width=.38),width=.16,linewidth=.45) +
-  geom_point(position=position_dodge(width=.38),size=2.8) +
+p1 <- ggplot(overall_plot,aes(x=estimate*100,y=arm,shape=arm)) +
+  geom_errorbar(
+    aes(xmin=ci_low*100,xmax=ci_high*100),
+    width=.16,linewidth=.45
+  ) +
+  geom_point(size=2.8,stroke=.75) +
+  facet_wrap(~outcome_label,ncol=1,strip.position="left") +
   scale_shape_manual(values=c(1,16)) +
-  scale_x_continuous(limits=c(0,100),breaks=seq(0,100,20)) +
-  labs(x="Estimated percentage of eligible publications",y=NULL,shape=NULL) +
-  theme_bw(base_size=10) +
-  theme(legend.position="none",panel.grid.minor=element_blank())
+  scale_x_continuous(
+    limits=c(0,100),
+    breaks=seq(0,100,20),
+    expand=expansion(mult=c(.01,.02))
+  ) +
+  labs(x="Estimated percentage of eligible publications",y=NULL) +
+  theme_statistical() +
+  theme(
+    legend.position="none",
+    strip.placement="outside",
+    strip.text.y.left=element_text(angle=0,hjust=1)
+  )
 
 domain_plot <- domain_states %>%
   mutate(
     arm=factor(arm,levels=c("DHS/MICS","DHIS2")),
-    state=factor(state,levels=c("A","M","I")),
+    state_label=factor(
+      state,
+      levels=c("A","M","I"),
+      labels=c("Aligned","Materially misaligned","Indeterminate / partial")
+    ),
     domain=factor(domain,levels=c("D1","D2","D3","D4"))
   )
 
-p2 <- ggplot(domain_plot,aes(x=estimate*100,y=state,shape=arm)) +
-  geom_point(position=position_dodge(width=.42),size=2.5) +
+p2 <- ggplot(domain_plot,aes(x=estimate*100,y=state_label,shape=arm)) +
+  geom_errorbar(
+    aes(xmin=ci_low*100,xmax=ci_high*100),
+    position=position_dodge(width=.42),width=.14,linewidth=.42
+  ) +
+  geom_point(position=position_dodge(width=.42),size=2.5,stroke=.7) +
   facet_wrap(~domain,ncol=2) +
   scale_shape_manual(values=c(1,16)) +
-  scale_x_continuous(limits=c(0,100),breaks=seq(0,100,25)) +
-  labs(x="Estimated percentage of eligible publications",y=NULL,shape=NULL) +
-  theme_bw(base_size=10) +
-  theme(legend.position="none",panel.grid.minor=element_blank(),
-        strip.background=element_blank(),strip.text=element_text(face="bold"))
+  scale_x_continuous(
+    limits=c(0,100),
+    breaks=seq(0,100,25),
+    expand=expansion(mult=c(.01,.02))
+  ) +
+  labs(x="Estimated percentage of eligible publications",y=NULL) +
+  theme_statistical()
 
 pit_plot_data <- pitfall_results %>%
   filter(!is.na(estimate)) %>%
   mutate(
     arm=factor(arm,levels=c("DHS/MICS","DHIS2")),
-    pitfall_id=factor(pitfall_id,levels=rev(paste0("P",1:12)))
+    pitfall_label=vapply(
+      paste0(pitfall_id,". ",pitfall_name),
+      function(x) paste(strwrap(x,width=38),collapse="\n"),
+      character(1)
+    )
   )
 
-p3 <- ggplot(pit_plot_data,aes(x=estimate*100,y=pitfall_id,shape=arm)) +
-  geom_errorbar(aes(xmin=ci_low*100,xmax=ci_high*100),
-                position=position_dodge(width=.38),width=.15,linewidth=.42) +
-  geom_point(position=position_dodge(width=.38),size=2.6) +
+pitfall_order <- pit_plot_data %>%
+  distinct(pitfall_id,pitfall_label) %>%
+  arrange(as.integer(sub("^P","",pitfall_id))) %>%
+  pull(pitfall_label)
+
+pit_plot_data <- pit_plot_data %>%
+  mutate(pitfall_label=factor(pitfall_label,levels=rev(pitfall_order)))
+
+p3 <- ggplot(pit_plot_data,aes(x=estimate*100,y=pitfall_label,shape=arm)) +
+  geom_errorbar(
+    aes(xmin=ci_low*100,xmax=ci_high*100),
+    position=position_dodge(width=.38),width=.13,linewidth=.42
+  ) +
+  geom_point(position=position_dodge(width=.38),size=2.55,stroke=.7) +
   scale_shape_manual(values=c(1,16)) +
-  scale_x_continuous(limits=c(0,100),breaks=seq(0,100,20)) +
-  labs(x="Prevalence among applicable publications (%)",y=NULL,shape=NULL) +
-  theme_bw(base_size=10) +
-  theme(legend.position="none",panel.grid.minor=element_blank())
+  scale_x_continuous(
+    limits=c(0,100),
+    breaks=seq(0,100,20),
+    expand=expansion(mult=c(.01,.02))
+  ) +
+  labs(x="Prevalence among applicable publications (%)",y=NULL) +
+  theme_statistical() +
+  theme(axis.text.y=element_text(size=8.2))
 
 save_vector <- function(plot,stem,width,height) {
   ggsave(file.path(out_dir,paste0(stem,".pdf")),plot,width=width,height=height,units="in",
@@ -723,9 +789,9 @@ save_vector <- function(plot,stem,width,height) {
   ggsave(file.path(out_dir,paste0(stem,".png")),plot,width=width,height=height,units="in",
          dpi=600)
 }
-save_vector(p1,"Figure1_overall_alignment",7.1,4.2)
-save_vector(p2,"Figure2_domain_states",7.1,5.5)
-save_vector(p3,"Supplementary_Figure_S1_sentinel_indicators",7.1,5.8)
+save_vector(p1,"Figure1_overall_alignment",7.1,5.0)
+save_vector(p2,"Figure2_domain_states",7.1,5.8)
+save_vector(p3,"Supplementary_Figure_S1_sentinel_indicators",7.1,7.0)
 
 # -------------------------------------------------------------------------
 # Environment and compact console checkpoint
