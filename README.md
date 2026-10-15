@@ -79,3 +79,4 @@ The manuscript-facing supplement is mapped directly to repository files:
 - Supplementary Table S5: `analysis/Supplementary_Table_S5_Sensitivity_Analyses.csv`
 - Supplementary Table S6: `analysis/Supplementary_Table_S6_Domain_CrossTabs_2026-10-13.csv`
 - Supplementary Table S7: `analysis/Supplementary_Table_S7_Search_Frame_Audit_2026-10-13.csv`, with exact search companion files under `analysis/search_audit/`.
+- Supplementary Table S8: `analysis/Supplementary_Table_S8_PRISMA_2020_Checklist_2026-10-14.csv`.
