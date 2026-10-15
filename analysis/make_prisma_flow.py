@@ -69,9 +69,9 @@ box(2.75,0.85,4.5,0.95,
 
 ax.text(0.45,0.22,
         "Note: The eligible finite frame (n = 466) defines the primary review population. "
-        "The n = 127 set is a probability sample for detailed methodological coding, "
-        "not a further eligibility exclusion.",
-        ha="left",va="bottom",fontsize=8.1,wrap=True)
+        "The n = 127 set is a probability sample\n"
+        "for detailed methodological coding, not a further eligibility exclusion.",
+        ha="left",va="bottom",fontsize=7.8)
 
 plt.tight_layout(pad=0.6)
 for ext in ("pdf","eps","png","svg"):

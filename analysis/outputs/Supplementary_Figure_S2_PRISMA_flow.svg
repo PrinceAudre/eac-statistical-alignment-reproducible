@@ -31,5 +31,5 @@ text{font-family:Arial,Helvetica,sans-serif;fill:#000} .box{fill:#fff;stroke:#00
 <rect x="215" y="801" width="390" height="90" rx="5" class="box"/><text x="410" y="828" class="s"><tspan x="410">Detailed methodological coding</tspan><tspan x="410" dy="20">stratified probability sample n = 127</tspan><tspan x="410" dy="20">DHS/MICS n = 80; DHIS2 n = 47</tspan></text>
 <path d="M410 891 L410 929" class="arr"/>
 <rect x="245" y="932" width="330" height="76" rx="5" class="box"/><text x="410" y="959" class="s"><tspan x="410">Independent reliability subsample, n = 26</tspan><tspan x="410" dy="20">DHS/MICS n = 16; DHIS2 n = 10</tspan></text>
-<text x="35" y="1035" style="font-size:12px;text-anchor:start">Note: n = 466 defines the primary finite review population. The n = 127 set is a probability sample for detailed coding, not a further eligibility exclusion.</text>
+<text x="35" y="1027" style="font-size:11.5px;text-anchor:start"><tspan x="35">Note: n = 466 defines the primary finite review population. The n = 127 set is a probability sample for detailed</tspan><tspan x="35" dy="16">coding, not a further eligibility exclusion.</tspan></text>
 </svg>
