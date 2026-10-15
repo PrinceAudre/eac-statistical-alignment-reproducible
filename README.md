@@ -15,14 +15,9 @@ Protocol registration: https://osf.io/89mk7/
 ### analysis/
 Search reproducibility: exact PubMed and Scopus/Publish or Perish strategies, validation history, export hashes, deduplication, and DHS Program supplementary-search audit are in `analysis/search_audit/`.
 
-Release-safe DHIS2 census robustness artifacts:
-- `DHIS2_Census_Robustness_Summary_2026-10-13.csv`
-- `DHIS2_Census_Robustness_Provenance_2026-10-13.md`
-- `outputs/Table_observability_composition.csv`
-- `outputs/Table_domain_cross_tabs.csv`
-- `outputs/Supplementary_Figure_S1_sentinel_indicators.{pdf,eps,png}`
+Primary analysis is the design-weighted analysis of the frozen 127-publication probability sample. A later DHIS2 census exercise is retained only as an exploratory audit record and is not used for primary inference or substantive conclusions. Some non-primary records could not be assessed from complete accessible full text, so no abstract-only methodological outcome is forced.
 
-Design-weighted analysis of the frozen 127-publication probability sample:
+Primary analysis materials:
 - clean derived analysis dataset
 - reliability dataset
 - frozen stratum metadata
