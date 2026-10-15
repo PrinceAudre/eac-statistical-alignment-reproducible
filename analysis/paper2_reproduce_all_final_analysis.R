@@ -746,10 +746,10 @@ p2 <- ggplot(domain_plot,aes(x=estimate*100,y=state_label,shape=arm)) +
   labs(x="Estimated percentage of eligible publications",y=NULL) +
   theme_statistical()
 
-pit_plot_data <- pitfall_results %>%
-  filter(!is.na(estimate)) %>%
+pitfall_labels <- pitfall_results %>%
+  distinct(pitfall_id,pitfall_name) %>%
+  arrange(as.integer(sub("^P","",pitfall_id))) %>%
   mutate(
-    arm=factor(arm,levels=c("DHS/MICS","DHIS2")),
     pitfall_label=vapply(
       paste0(pitfall_id,". ",pitfall_name),
       function(x) paste(strwrap(x,width=38),collapse="\n"),
@@ -757,13 +757,29 @@ pit_plot_data <- pitfall_results %>%
     )
   )
 
-pitfall_order <- pit_plot_data %>%
-  distinct(pitfall_id,pitfall_label) %>%
-  arrange(as.integer(sub("^P","",pitfall_id))) %>%
-  pull(pitfall_label)
+pitfall_order <- pitfall_labels$pitfall_label
 
-pit_plot_data <- pit_plot_data %>%
-  mutate(pitfall_label=factor(pitfall_label,levels=rev(pitfall_order)))
+pit_plot_data <- pitfall_results %>%
+  left_join(pitfall_labels,by=c("pitfall_id","pitfall_name")) %>%
+  filter(!is.na(estimate)) %>%
+  mutate(
+    arm=factor(arm,levels=c("DHS/MICS","DHIS2")),
+    pitfall_label=factor(pitfall_label,levels=rev(pitfall_order))
+  )
+
+no_applicable <- pitfall_labels %>%
+  filter(
+    pitfall_id %in% pitfall_results %>%
+      group_by(pitfall_id) %>%
+      summarise(any_applicable=any(raw_applicable>0),.groups="drop") %>%
+      filter(!any_applicable) %>%
+      pull(pitfall_id)
+  ) %>%
+  transmute(
+    x=2,
+    pitfall_label=factor(pitfall_label,levels=rev(pitfall_order)),
+    label="No applicable publications"
+  )
 
 p3 <- ggplot(pit_plot_data,aes(x=estimate*100,y=pitfall_label,shape=arm)) +
   geom_errorbar(
@@ -771,7 +787,14 @@ p3 <- ggplot(pit_plot_data,aes(x=estimate*100,y=pitfall_label,shape=arm)) +
     position=position_dodge(width=.38),width=.13,linewidth=.42
   ) +
   geom_point(position=position_dodge(width=.38),size=2.55,stroke=.7) +
+  geom_text(
+    data=no_applicable,
+    aes(x=x,y=pitfall_label,label=label),
+    inherit.aes=FALSE,
+    hjust=0,size=3
+  ) +
   scale_shape_manual(values=c(1,16)) +
+  scale_y_discrete(limits=rev(pitfall_order),drop=FALSE) +
   scale_x_continuous(
     limits=c(0,100),
     breaks=seq(0,100,20),
