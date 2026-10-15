@@ -767,14 +767,14 @@ pit_plot_data <- pitfall_results %>%
     pitfall_label=factor(pitfall_label,levels=rev(pitfall_order))
   )
 
+no_applicable_ids <- pitfall_results %>%
+  group_by(pitfall_id) %>%
+  summarise(any_applicable=any(raw_applicable>0),.groups="drop") %>%
+  filter(!any_applicable) %>%
+  pull(pitfall_id)
+
 no_applicable <- pitfall_labels %>%
-  filter(
-    pitfall_id %in% pitfall_results %>%
-      group_by(pitfall_id) %>%
-      summarise(any_applicable=any(raw_applicable>0),.groups="drop") %>%
-      filter(!any_applicable) %>%
-      pull(pitfall_id)
-  ) %>%
+  filter(pitfall_id %in% no_applicable_ids) %>%
   transmute(
     x=2,
     pitfall_label=factor(pitfall_label,levels=rev(pitfall_order)),
