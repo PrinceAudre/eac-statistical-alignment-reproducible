@@ -1,0 +1,82 @@
+name: Paper 2 R figure refresh
+
+on:
+  push:
+    branches:
+      - paper2-finalize-20261015
+    paths:
+      - analysis/paper2_reproduce_all_final_analysis.R
+      - analysis/Paper2_R_Analysis_Compact_127.csv
+      - analysis/Paper2_R_Reliability_Clean_26.csv
+      - analysis/Paper2_R_Strata_Clean.csv
+      - .github/workflows/paper2-r-figure-refresh.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reproduce:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out finalization branch
+        uses: actions/checkout@v4
+        with:
+          ref: paper2-finalize-20261015
+
+      - name: Set up R 4.6.0
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.6.0'
+          use-public-rspm: true
+
+      - name: Install analysis dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::survey
+            any::readr
+            any::dplyr
+            any::tidyr
+            any::ggplot2
+            any::scales
+            any::tibble
+
+      - name: Run complete Paper 2 analysis
+        shell: pwsh
+        run: |
+          Set-Location analysis
+          Rscript paper2_reproduce_all_final_analysis.R
+
+      - name: Verify numerical outputs did not drift
+        shell: pwsh
+        run: |
+          $changed = git status --porcelain -- analysis/outputs/*.csv
+          if ($changed) {
+            Write-Host "Unexpected numerical-output changes:"
+            Write-Host $changed
+            git diff -- analysis/outputs/*.csv
+            exit 1
+          }
+
+      - name: Commit regenerated figures
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add analysis/outputs/Figure1_overall_alignment.pdf
+          git add analysis/outputs/Figure1_overall_alignment.eps
+          git add analysis/outputs/Figure1_overall_alignment.png
+          git add analysis/outputs/Figure2_domain_states.pdf
+          git add analysis/outputs/Figure2_domain_states.eps
+          git add analysis/outputs/Figure2_domain_states.png
+          git add analysis/outputs/Supplementary_Figure_S1_sentinel_indicators.pdf
+          git add analysis/outputs/Supplementary_Figure_S1_sentinel_indicators.eps
+          git add analysis/outputs/Supplementary_Figure_S1_sentinel_indicators.png
+          if (-not (git diff --cached --quiet)) {
+            git commit -m "Regenerate final Paper 2 figures [skip ci]"
+            git push origin HEAD:paper2-finalize-20261015
+          } else {
+            Write-Host "Figures already match the regenerated outputs."
+          }
